@@ -73,5 +73,15 @@ export const OrderInfo: FC = () => {
     return <Preloader />;
   }
 
-  return <OrderInfoUI orderInfo={orderInfo} />;
+  return (
+    <>
+      <p
+        className='text text_type_digits-default mb-5'
+        style={{ textAlign: 'center' }}
+      >
+        #{String(orderInfo.number).padStart(6, '0')}
+      </p>
+      <OrderInfoUI orderInfo={orderInfo} />
+    </>
+  );
 };
