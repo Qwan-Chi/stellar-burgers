@@ -26,10 +26,8 @@ describe('Конструктор бургера', () => {
 
   describe('Добавление ингредиентов в конструктор', () => {
     it('должен добавить булку в конструктор', () => {
-      cy.get('[data-cy=ingredient]')
-        .contains('Краторная булка N-200i')
-        .parents('[data-cy=ingredient]')
-        .find('button')
+      cy.contains('[data-cy=ingredient]', 'Краторная булка N-200i')
+        .contains('Добавить')
         .click();
 
       cy.get('[data-cy=burger-constructor]')
@@ -38,10 +36,8 @@ describe('Конструктор бургера', () => {
     });
 
     it('должен добавить начинку в конструктор', () => {
-      cy.get('[data-cy=ingredient]')
-        .contains('Биокотлета из марсианской Магнолии')
-        .parents('[data-cy=ingredient]')
-        .find('button')
+      cy.contains('[data-cy=ingredient]', 'Биокотлета из марсианской Магнолии')
+        .contains('Добавить')
         .click();
 
       cy.get('[data-cy=burger-constructor]').should(
@@ -51,10 +47,8 @@ describe('Конструктор бургера', () => {
     });
 
     it('должен добавить соус в конструктор', () => {
-      cy.get('[data-cy=ingredient]')
-        .contains('Соус Spicy-X')
-        .parents('[data-cy=ingredient]')
-        .find('button')
+      cy.contains('[data-cy=ingredient]', 'Соус Spicy-X')
+        .contains('Добавить')
         .click();
 
       cy.get('[data-cy=burger-constructor]').should('contain', 'Соус Spicy-X');
@@ -63,8 +57,8 @@ describe('Конструктор бургера', () => {
 
   describe('Модальные окна', () => {
     it('должен открыть модальное окно ингредиента при клике', () => {
-      cy.get('[data-cy=ingredient]')
-        .contains('Краторная булка N-200i')
+      cy.contains('[data-cy=ingredient]', 'Краторная булка N-200i')
+        .find('a')
         .click();
 
       cy.get('[data-cy=modal]').should('exist');
@@ -77,8 +71,8 @@ describe('Конструктор бургера', () => {
     });
 
     it('должен закрыть модальное окно по клику на крестик', () => {
-      cy.get('[data-cy=ingredient]')
-        .contains('Краторная булка N-200i')
+      cy.contains('[data-cy=ingredient]', 'Краторная булка N-200i')
+        .find('a')
         .click();
 
       cy.get('[data-cy=modal]').should('exist');
@@ -89,8 +83,8 @@ describe('Конструктор бургера', () => {
     });
 
     it('должен закрыть модальное окно по клику на оверлей', () => {
-      cy.get('[data-cy=ingredient]')
-        .contains('Краторная булка N-200i')
+      cy.contains('[data-cy=ingredient]', 'Краторная булка N-200i')
+        .find('a')
         .click();
 
       cy.get('[data-cy=modal]').should('exist');
@@ -101,8 +95,8 @@ describe('Конструктор бургера', () => {
     });
 
     it('должен закрыть модальное окно по нажатию Escape', () => {
-      cy.get('[data-cy=ingredient]')
-        .contains('Краторная булка N-200i')
+      cy.contains('[data-cy=ingredient]', 'Краторная булка N-200i')
+        .find('a')
         .click();
 
       cy.get('[data-cy=modal]').should('exist');
@@ -119,16 +113,12 @@ describe('Конструктор бургера', () => {
         fixture: 'order.json'
       }).as('createOrder');
 
-      cy.get('[data-cy=ingredient]')
-        .contains('Краторная булка N-200i')
-        .parents('[data-cy=ingredient]')
-        .find('button')
+      cy.contains('[data-cy=ingredient]', 'Краторная булка N-200i')
+        .contains('Добавить')
         .click();
 
-      cy.get('[data-cy=ingredient]')
-        .contains('Биокотлета из марсианской Магнолии')
-        .parents('[data-cy=ingredient]')
-        .find('button')
+      cy.contains('[data-cy=ingredient]', 'Биокотлета из марсианской Магнолии')
+        .contains('Добавить')
         .click();
 
       cy.contains('button', 'Оформить заказ').click();
