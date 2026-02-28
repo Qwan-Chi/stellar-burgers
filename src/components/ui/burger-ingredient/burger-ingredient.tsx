@@ -29,11 +29,13 @@ export const BurgerIngredientUI: FC<TBurgerIngredientUIProps> = memo(
           </div>
           <p className={`text text_type_main-default ${styles.text}`}>{name}</p>
         </Link>
-        <AddButton
-          text='Добавить'
-          onClick={handleAdd}
-          extraClass={`${styles.addButton} mt-8`}
-        />
+        <div data-cy='add-button'>
+          <AddButton
+            text='Добавить'
+            onClick={handleAdd}
+            extraClass={`${styles.addButton} mt-8`}
+          />
+        </div>
       </li>
     );
   }
