@@ -27,7 +27,7 @@ describe('Конструктор бургера', () => {
   describe('Добавление ингредиентов в конструктор', () => {
     it('должен добавить булку в конструктор', () => {
       cy.contains('[data-cy=ingredient]', 'Краторная булка N-200i')
-        .find('[data-cy=add-button]')
+        .find('[data-cy=add-button] button')
         .click();
 
       cy.get('[data-cy=burger-constructor]')
@@ -37,7 +37,7 @@ describe('Конструктор бургера', () => {
 
     it('должен добавить начинку в конструктор', () => {
       cy.contains('[data-cy=ingredient]', 'Биокотлета из марсианской Магнолии')
-        .find('[data-cy=add-button]')
+        .find('[data-cy=add-button] button')
         .click();
 
       cy.get('[data-cy=burger-constructor]').should(
@@ -48,7 +48,7 @@ describe('Конструктор бургера', () => {
 
     it('должен добавить соус в конструктор', () => {
       cy.contains('[data-cy=ingredient]', 'Соус Spicy-X')
-        .find('[data-cy=add-button]')
+        .find('[data-cy=add-button] button')
         .click();
 
       cy.get('[data-cy=burger-constructor]').should('contain', 'Соус Spicy-X');
@@ -114,11 +114,11 @@ describe('Конструктор бургера', () => {
       }).as('createOrder');
 
       cy.contains('[data-cy=ingredient]', 'Краторная булка N-200i')
-        .find('[data-cy=add-button]')
+        .find('[data-cy=add-button] button')
         .click();
 
       cy.contains('[data-cy=ingredient]', 'Биокотлета из марсианской Магнолии')
-        .find('[data-cy=add-button]')
+        .find('[data-cy=add-button] button')
         .click();
 
       cy.contains('button', 'Оформить заказ').click();
